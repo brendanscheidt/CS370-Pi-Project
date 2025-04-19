@@ -44,12 +44,12 @@ def get_distance():
 
 def map_distance_to_frequency(d):
     """Clamp [MIN_DISTANCE…MAX_DISTANCE] → [MIN_FREQ…MAX_FREQ]."""
-    """
     d = max(MIN_DISTANCE, min(MAX_DISTANCE, d))
+    """
     return ((d - MIN_DISTANCE) * (MAX_FREQ - MIN_FREQ)
             / (MAX_DISTANCE - MIN_DISTANCE)) + MIN_FREQ
     """
-    n = min(max(math.floor(d), MIN_DISTANCE), MAX_DISTANCE) / 2
+    n = math.floor(d) / 4
     return pow(2, n / 12) * REFERENCE_PITCH
 
 def main():
