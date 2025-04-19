@@ -13,7 +13,7 @@ MAX_DISTANCE = 70   # cm
 MIN_FREQ     = 220.0  # Hz
 MAX_FREQ     = 1000.0  # Hz
 
-REFERENCE_PITCH = 440.0 # Hz
+REFERENCE_PITCH = 220.0 # Hz
 
 SENSOR_SETTLING_DELAY = 0.1     # s
 TRIGGER_PULSE_LENGTH  = 0.00001 # s
@@ -49,7 +49,7 @@ def map_distance_to_frequency(d):
     return ((d - MIN_DISTANCE) * (MAX_FREQ - MIN_FREQ)
             / (MAX_DISTANCE - MIN_DISTANCE)) + MIN_FREQ
     """
-    n = min(max(math.floor(d), MIN_DISTANCE), MAX_DISTANCE)
+    n = min(max(math.floor(d), MIN_DISTANCE), MAX_DISTANCE) / 2
     return pow(2, n / 12) * REFERENCE_PITCH
 
 def main():
